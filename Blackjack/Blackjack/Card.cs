@@ -4,15 +4,10 @@ namespace Blackjack
     {
         public int value;
         public string suite;
-
-        // public Card(string cardValue)
-        // {
-
-        // }
-         
-        public string GetCardValue (string cardValue)
+        public bool isAce;
+        public string GetCardValue()
         {
-            return suite + value;
+            return value + " of " + suite;
         }
     }
 }
