@@ -34,6 +34,9 @@ namespace Blackjack
                 else { Bust(); return 0; }
             }
         }
+        public void Hit(){
+            
+        } 
         public void Bust()
         {
             Console.WriteLine(higestHandValue);

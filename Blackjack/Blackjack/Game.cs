@@ -9,7 +9,7 @@ namespace Blackjack
 
         public void Intro()
         {
-
+            Console.WriteLine("Welcome to Blackjack");
             foreach (Card card in deck.deckUnOrder)
             {
                 Console.WriteLine(card.GetCardValue());
@@ -17,7 +17,12 @@ namespace Blackjack
             Player player = new Player();
             System.Console.WriteLine("What is your name gambling man!");
             player.name = Console.ReadLine();
-            Console.ReadLine();
+            Console.WriteLine(player.name + " press anything exept power off to start loosing monies");
+            Console.ReadKey();
+        }
+        public void Update()
+        {
+            
         }
     }
 
