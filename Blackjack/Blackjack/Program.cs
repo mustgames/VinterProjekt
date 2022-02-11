@@ -5,4 +5,3 @@ while(game.gameRunning == true)
 {
     game.Update();
 }
-

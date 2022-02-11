@@ -3,20 +3,19 @@ namespace Blackjack
     public class Player
     {
         public List<Card> hand = new List<Card>();
-        public int higestHandValue;
-        public int lowestHandValue;
+        public int handValue;
         public bool hasBlackJack;
         public string name;
 
-        public int HandValue(int value)
+        public int HandValue()
         {
             foreach (Card hand in hand)
             {
-                higestHandValue = higestHandValue + hand.value;
+                handValue = handValue + hand.value;
             }
-            if (higestHandValue < 21)
+            if (handValue < 21)
             {
-                return higestHandValue;
+                return handValue;
             }
             else
             {
@@ -24,22 +23,26 @@ namespace Blackjack
                 {
                     if (hand.isAce == true)
                     {
-                        higestHandValue = higestHandValue - 10;
+                        handValue = handValue - 10;
+                        Console.WriteLine("lets count that ace as a 1 now");
                     }
                 }
-                if (higestHandValue < 21)
+                if (handValue < 21)
                 {
-                    return higestHandValue;
+                    return handValue;
                 }
-                else { Bust(); return 0; }
+                else { Bust(); return handValue; }
             }
         }
-        public void Hit(){
-            
+        public void Hit(Card card)
+        {
+            hand.Add(card);
+            Console.WriteLine(name + " got a " + card.GetCardValue());
+            Console.WriteLine("Your hand is now valued at " + HandValue());
         } 
         public void Bust()
         {
-            Console.WriteLine(higestHandValue);
+            Console.WriteLine(handValue);
             Console.WriteLine(name + " busted and loose thier monines");
         }
     }

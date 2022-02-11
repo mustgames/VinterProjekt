@@ -6,11 +6,10 @@ namespace Blackjack
         public Queue<Card> deckUnOrder = new Queue<Card>();
         public Random random = new Random();
 
-        public int cards;
         public string[] suites = { "Hearts", "Diamonds", "Clubs", "Spades" };
         public string[] dresses = { "Jack", "Queen", "King", };
 
-        public Deck()
+        public Deck() 
         {
             CreateDeck();
         }
@@ -24,12 +23,12 @@ namespace Blackjack
                     var card = new Card { value = i, suite = suites };
                     deckOrder.Add(card);
                 }
-                foreach (string dresses in dresses)
+                foreach (string dresses in dresses) // creates all dressed cards in diffrent suites thier value is always 10 and is set in their constructor
                 {
                     var dressedCard = new DressedCard { suite = suites };
                     deckOrder.Add(dressedCard);
                 }
-                var ace = new Ace { suite = suites };
+                var ace = new Ace { suite = suites }; // creates all aces in diffrent suites thier value is set in constructor and then handeld by Player HandValue()
                 deckOrder.Add(ace);
             }
             for (int i = 0; i < 52; i++) // change max number to 1- max cards in deck 

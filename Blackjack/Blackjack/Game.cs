@@ -20,6 +20,13 @@ namespace Blackjack
             Console.WriteLine(player.name + " press anything exept power off to start loosing monies");
             Console.ReadKey();
         }
+        public void Deal()
+        {
+            foreach (Player player in players)
+            {
+                player.hand.Add(deck.deckUnOrder.Dequeue());
+            }
+        }
         public void Update()
         {
             
