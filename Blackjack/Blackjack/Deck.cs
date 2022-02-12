@@ -9,7 +9,7 @@ namespace Blackjack
         public string[] suites = { "Hearts", "Diamonds", "Clubs", "Spades" };
         public string[] dresses = { "Jack", "Queen", "King", };
 
-        public Deck() 
+        public Deck()
         {
             CreateDeck();
         }
@@ -25,7 +25,7 @@ namespace Blackjack
                 }
                 foreach (string dresses in dresses) // creates all dressed cards in diffrent suites thier value is always 10 and is set in their constructor
                 {
-                    var dressedCard = new DressedCard { suite = suites };
+                    var dressedCard = new DressedCard { suite = suites, dress = dresses };
                     deckOrder.Add(dressedCard);
                 }
                 var ace = new Ace { suite = suites }; // creates all aces in diffrent suites thier value is set in constructor and then handeld by Player HandValue()

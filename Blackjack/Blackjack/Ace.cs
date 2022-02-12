@@ -1,6 +1,6 @@
 namespace Blackjack
 {
-    public class Ace : DressedCard
+    public class Ace : Card
     {
         public Ace()
         {

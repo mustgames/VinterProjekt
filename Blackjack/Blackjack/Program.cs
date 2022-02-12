@@ -1,7 +1,18 @@
 ﻿using Blackjack;
 Game game = new Game();
 game.Intro();
-while(game.gameRunning == true)
+
+while (game.gameRunning == true)
 {
-    game.Update();
+    game.Deal();
+    if (game.blackjackWin == false)
+    {
+        game.OfferHit();
+        game.Reveal();
+
+    }
+    game.RematchOption();
 }
+
+Console.WriteLine("Bye bye take ur monies other day! (press anything to exit)");
+Console.ReadKey();

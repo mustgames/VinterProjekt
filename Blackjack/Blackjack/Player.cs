@@ -9,11 +9,12 @@ namespace Blackjack
 
         public int HandValue()
         {
-            foreach (Card hand in hand)
+            handValue = 0;
+            foreach (Card card in hand)
             {
-                handValue = handValue + hand.value;
+                handValue = handValue + card.value;
             }
-            if (handValue < 21)
+            if (handValue <= 21)
             {
                 return handValue;
             }
@@ -27,23 +28,31 @@ namespace Blackjack
                         Console.WriteLine("lets count that ace as a 1 now");
                     }
                 }
-                if (handValue < 21)
+                if (handValue <= 21)
                 {
                     return handValue;
                 }
-                else { Bust(); return handValue; }
+                else
+                {
+                    Bust();
+                    return handValue;
+                }
             }
         }
         public void Hit(Card card)
         {
             hand.Add(card);
             Console.WriteLine(name + " got a " + card.GetCardValue());
-            Console.WriteLine("Your hand is now valued at " + HandValue());
-        } 
+            Console.WriteLine(name + " hand is now valued at " + HandValue());
+        }
         public void Bust()
         {
             Console.WriteLine(handValue);
             Console.WriteLine(name + " busted and loose thier monines");
+            if (name == "Dealer")
+            {
+                Console.WriteLine("Player Wins!");
+            }
         }
     }
 }
