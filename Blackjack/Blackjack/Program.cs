@@ -5,7 +5,7 @@ game.Intro();
 while (game.gameRunning == true)
 {
     game.Deal();
-    if (game.blackjackWin == false)
+    if (game.win == false)
     {
         game.OfferHit();
         game.Reveal();

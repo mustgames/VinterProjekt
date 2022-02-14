@@ -41,17 +41,31 @@ namespace Blackjack
         }
         public void Hit(Card card)
         {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(".");
+                System.Threading.Thread.Sleep(30);
+                Console.WriteLine("..");
+                System.Threading.Thread.Sleep(30);
+                Console.WriteLine("...");
+                System.Threading.Thread.Sleep(30);
+                Console.Clear();
+            }
             hand.Add(card);
             Console.WriteLine(name + " got a " + card.GetCardValue());
             Console.WriteLine(name + " hand is now valued at " + HandValue());
         }
         public void Bust()
         {
-            Console.WriteLine(handValue);
-            Console.WriteLine(name + " busted and loose thier monines");
-            if (name == "Dealer")
+
+            if (this is Dealer)
             {
                 Console.WriteLine("Player Wins!");
+            }
+            else
+            {
+                Console.WriteLine(handValue);
+                Console.WriteLine(name + " busted and loose thier monines");
             }
         }
     }

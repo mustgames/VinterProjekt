@@ -3,28 +3,24 @@ namespace Blackjack
     public class Game
     {
         public bool gameRunning;
-        public bool blackjackWin;
+        public bool win;
         public Deck deck = new Deck();
         public int cardsInDeck;
         List<Player> players = new List<Player>();
         Player player = new Player();
         Dealer dealer = new Dealer();
 
-
-
         public void Intro()
         {
             players.Add(player);
             Console.WriteLine("Welcome to Blackjack");
-            foreach (Card card in deck.deckUnOrder)
-            {
-                Console.WriteLine(card.GetCardValue());
-            }
             Console.WriteLine("What is your name gambling man!");
             player.name = Console.ReadLine();
-            Console.WriteLine(player.name + " press anything exept power off to start loosing monies");
+            Console.WriteLine(player.name + " press anything exept power off or alt + F4 to start loosing monies"); // other Malte thought instructions where to unclear
             gameRunning = true;
+            win = false;
             Console.ReadKey(true);
+            Console.Clear();
         }
 
         public void Deal()
@@ -45,6 +41,10 @@ namespace Blackjack
         {
             while (true)
             {
+                if (win == true)
+                {
+                    break;
+                }
                 Console.WriteLine("Dealer has " + dealer.HandValue());
                 Console.WriteLine("want card? press [y] for yes or [n] for no");
                 string input = Console.ReadLine();
@@ -77,7 +77,7 @@ namespace Blackjack
         }
         public void RematchOption()
         {
-            blackjackWin = false;
+            win = false;
             while (true)
             {
                 Console.WriteLine("want play again? press [y] for yes or [n] for no");
@@ -91,16 +91,27 @@ namespace Blackjack
         }
         public void PlayerWin()
         {
-            Console.WriteLine("Player Wins!");
+            if (win == false)
+            {
+                Console.WriteLine("Player Wins!");
+                win = true;
+            }
         }
         public void DealerWin()
         {
-            Console.WriteLine("Dealer Wins yay!!! i get the monies");
+            if (win == false)
+            {
+                Console.WriteLine("Dealer Wins yay!!! i get the monies");
+                win = true;
+            }
         }
         public void BlackjackWin()
         {
-            Console.WriteLine("Player Wins dubble with a black jack win!");
-            blackjackWin = true;
+            if (win == false)
+            {
+                Console.WriteLine("Player Wins dubble with a black jack win!");
+                win = true;
+            }
         }
     }
 }
