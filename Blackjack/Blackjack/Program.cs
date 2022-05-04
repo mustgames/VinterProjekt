@@ -12,6 +12,7 @@ while (gameRunning == true)
     game.Deal();
     game.OfferHit();
     game.Reveal();
+    game.ShowPlayedCardsOption();
     gameRunning = game.RematchOption();
 }
 Console.WriteLine();

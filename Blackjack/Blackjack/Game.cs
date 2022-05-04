@@ -8,23 +8,32 @@ namespace Blackjack
         List<Player> players = new List<Player>();
         Player player = new Player();
         Dealer dealer = new Dealer();
-
+        DrawnCards drawnCards = new DrawnCards();
         public void Intro()
         { // intro gives player some basic info and lets them input a string name
             players.Add(player);
             Console.WriteLine("Welcome to Blackjack");
             Console.WriteLine("What is your name gambling man!");
-            // while(true)
-            // {
-            //try
-            // {
-            player.name = Console.ReadLine();
-            //}
-            // catch (SystemException. ArgumentOutOfRangeException)
-            // {            
-            //     throw;
-            // }
-            // }
+            while(true)
+            {
+                try
+                {
+                    player.name = Console.ReadLine();
+                    if(player.name != "" && player.name != "nothing" && player.name != "Nothing"&& player.name != "NOTHING")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Your name can't be nothing");  
+                    }
+                }
+                catch (System.NullReferenceException)
+                {          
+                    System.Console.WriteLine("Your name can't be nothing");  
+                    throw;
+                }
+             }
             Console.WriteLine();
             Console.WriteLine(player.name + " press anything exept power off or alt + F4 to start loosing monies"); // other Malte thought instructions where to unclear
             gameRunning = true;
@@ -32,7 +41,6 @@ namespace Blackjack
             Console.ReadKey(true);
             Console.Clear();
         }
-
         public void Deal()
         { // Deal gives out the starting hand 2 cards for each player and 1 for dealer also checks for a blackjackwin 
             foreach (Player player in players) // removes all old cards in case of another round
@@ -51,15 +59,22 @@ namespace Blackjack
             foreach (Player player in players)
             {
                 player.hand.Add(deck.deckUnOrder.Dequeue());
+                System.Console.WriteLine(player.hand.Count);
+                Console.ReadLine();
+                drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
+
                 player.hand.Add(deck.deckUnOrder.Dequeue());
+                drawnCards.RememberCard(player.hand[player.hand.Count- 1]);
+
                 if (player.HandValue() == 21)
                 {
                     BlackjackWin();
                 }
             }
             dealer.hand.Add(deck.deckUnOrder.Dequeue());
-        }
+            drawnCards.RememberCard(dealer.hand[dealer.hand.Count- 1]);
 
+        }
         public void OfferHit()
         {// offer hit first checks if the player has already won in case of blackjack then player can input y or n to accept or decline reciving another card
             while (true && player.HandValue() < 22 && dealer.HandValue() < 22 && gameRunning == true && win == false)
@@ -73,6 +88,8 @@ namespace Blackjack
                 if (input == "y" || input == "Y")
                 {
                     player.Hit(deck.deckUnOrder.Dequeue());
+                    drawnCards.RememberCard(player.hand[player.hand.Count- 1]);
+
                 }
                 else if (input == "n" || input == "N")
                 {
@@ -107,6 +124,7 @@ namespace Blackjack
                         break;
                     }
                     dealer.Hit(deck.deckUnOrder.Dequeue());
+                    drawnCards.RememberCard(dealer.hand[dealer.hand.Count- 1]);
                 }
             }
         }
@@ -126,6 +144,24 @@ namespace Blackjack
                 else if (input == "y" || input == "Y")
                 {
                     return true;
+                }
+            }
+        }
+        public void ShowPlayedCardsOption()
+        {
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("want show played cards? press [y] for yes or [n] for no");
+                string input = Console.ReadLine();
+                if (input == "n" || input == "N")
+                {
+                    drawnCards.ListPlayedCards();
+                    break;              
+                }
+                else if (input == "y" || input == "Y")
+                {
+                    break;              
                 }
             }
         }
