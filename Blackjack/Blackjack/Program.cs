@@ -1,18 +1,19 @@
 ﻿using Blackjack;
+
 Game game = new Game();
 game.Intro();
+bool gameRunning = true;
 
-while (game.gameRunning == true)
+// this script is structured to show a clear outline of when events take place
+// therfore I have moved the actual code of the events to methodes in the game class. 
+
+while (gameRunning == true)
 {
     game.Deal();
-    if (game.win == false)
-    {
-        game.OfferHit();
-        game.Reveal();
-
-    }
-    game.RematchOption();
+    game.OfferHit();
+    game.Reveal();
+    gameRunning = game.RematchOption();
 }
-
+Console.WriteLine();
 Console.WriteLine("Bye bye take ur monies other day! (press anything to exit)");
 Console.ReadKey();

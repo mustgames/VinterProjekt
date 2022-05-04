@@ -7,5 +7,9 @@ namespace Blackjack
             value = 11;
             isAce = true;
         }
+        public override string GetCardString()
+        {
+            return "Ace " + suite;
+        }
     }
 }

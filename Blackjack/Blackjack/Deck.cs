@@ -2,14 +2,14 @@ namespace Blackjack
 {
     public class Deck
     {
-        public List<Card> deckOrder = new List<Card>();
+        List<Card> deckOrder = new List<Card>();
         public Queue<Card> deckUnOrder = new Queue<Card>();
-        public Random random = new Random();
+        Random random = new Random();
 
-        public string[] suites = { "Hearts", "Diamonds", "Clubs", "Spades" };
-        public string[] dresses = { "Jack", "Queen", "King", };
+        string[] suites = { "Hearts", "Diamonds", "Clubs", "Spades" };
+        string[] dresses = { "Jack", "Queen", "King", };
 
-        public Deck()
+        public Deck() // room for improvement, wrote like this in case I would want to use the CreateDeck() methode to suffle the deck but I could have just put the deck in 
         {
             CreateDeck();
         }
@@ -31,7 +31,7 @@ namespace Blackjack
                 var ace = new Ace { suite = suites }; // creates all aces in diffrent suites thier value is set in constructor and then handeld by Player HandValue()
                 deckOrder.Add(ace);
             }
-            for (int i = 0; i < 52; i++) // change max number to 1- max cards in deck 
+            for (int i = 0; i < 52; i++)  // shuffels the cards
             {
                 int x = random.Next(0, deckOrder.Count);
                 deckUnOrder.Enqueue(deckOrder[x]);

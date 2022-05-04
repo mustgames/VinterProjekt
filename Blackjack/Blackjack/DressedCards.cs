@@ -7,5 +7,9 @@ namespace Blackjack
         {
             value = 10;
         }
+        public override string GetCardString()
+        {
+            return dress + " of " + suite;
+        }
     }
 }
