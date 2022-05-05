@@ -14,26 +14,26 @@ namespace Blackjack
             players.Add(player);
             Console.WriteLine("Welcome to Blackjack");
             Console.WriteLine("What is your name gambling man!");
-            while(true)
+            while (true)
             {
                 try
                 {
                     player.name = Console.ReadLine();
-                    if(player.name != "" && player.name != "nothing" && player.name != "Nothing"&& player.name != "NOTHING")
+                    if (player.name != "" && player.name != "nothing" && player.name != "Nothing" && player.name != "NOTHING")
                     {
                         break;
                     }
                     else
                     {
-                        System.Console.WriteLine("Your name can't be nothing");  
+                        System.Console.WriteLine("Your name can't be nothing");
                     }
                 }
                 catch (System.NullReferenceException)
-                {          
-                    System.Console.WriteLine("Your name can't be nothing");  
+                {
+                    System.Console.WriteLine("Your name can't be nothing");
                     throw;
                 }
-             }
+            }
             Console.WriteLine();
             Console.WriteLine(player.name + " press anything exept power off or alt + F4 to start loosing monies"); // other Malte thought instructions where to unclear
             gameRunning = true;
@@ -59,12 +59,10 @@ namespace Blackjack
             foreach (Player player in players)
             {
                 player.hand.Add(deck.deckUnOrder.Dequeue());
-                System.Console.WriteLine(player.hand.Count);
-                Console.ReadLine();
                 drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
 
                 player.hand.Add(deck.deckUnOrder.Dequeue());
-                drawnCards.RememberCard(player.hand[player.hand.Count- 1]);
+                drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
 
                 if (player.HandValue() == 21)
                 {
@@ -72,7 +70,7 @@ namespace Blackjack
                 }
             }
             dealer.hand.Add(deck.deckUnOrder.Dequeue());
-            drawnCards.RememberCard(dealer.hand[dealer.hand.Count- 1]);
+            drawnCards.RememberCard(dealer.hand[dealer.hand.Count - 1]);
 
         }
         public void OfferHit()
@@ -88,7 +86,7 @@ namespace Blackjack
                 if (input == "y" || input == "Y")
                 {
                     player.Hit(deck.deckUnOrder.Dequeue());
-                    drawnCards.RememberCard(player.hand[player.hand.Count- 1]);
+                    drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
 
                 }
                 else if (input == "n" || input == "N")
@@ -124,7 +122,7 @@ namespace Blackjack
                         break;
                     }
                     dealer.Hit(deck.deckUnOrder.Dequeue());
-                    drawnCards.RememberCard(dealer.hand[dealer.hand.Count- 1]);
+                    drawnCards.RememberCard(dealer.hand[dealer.hand.Count - 1]);
                 }
             }
         }
@@ -156,12 +154,12 @@ namespace Blackjack
                 string input = Console.ReadLine();
                 if (input == "n" || input == "N")
                 {
-                    drawnCards.ListPlayedCards();
-                    break;              
+                    break;
                 }
                 else if (input == "y" || input == "Y")
                 {
-                    break;              
+                    drawnCards.ListPlayedCards();
+                    break;
                 }
             }
         }

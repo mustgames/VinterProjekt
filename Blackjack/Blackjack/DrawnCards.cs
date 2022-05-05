@@ -4,18 +4,20 @@ namespace Blackjack
 {
     public class DrawnCards
     {
-        Dictionary<int, Card> playedCards = new Dictionary <int, Card>();
+        Dictionary<int, Card> playedCards = new Dictionary<int, Card>();
         int i = 1;
         public void RememberCard(Card card)
         {
-            playedCards.Add(i,card);
+            playedCards.Add(i, card);
             i++;
-       }
+        }
         public void ListPlayedCards()
         {
-            for (int i = 1; i < playedCards.Count; i++)
+
+            for (int i = 1; i < playedCards.Count + 1; i++)
             {
-                Console.WriteLine(playedCards[i].GetCardString());        
+                Console.WriteLine(playedCards[i].GetCardString());
+
             }
         }
     }
