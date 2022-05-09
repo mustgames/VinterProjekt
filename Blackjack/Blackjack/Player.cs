@@ -9,7 +9,7 @@ namespace Blackjack
         public string name;
 
 
-        public int HandValue() // checks hands value and busts 
+        public int HandValue() // checks hands value and if to high busts 
         {
             handValue = 0;
             foreach (Card card in hand)
@@ -42,7 +42,7 @@ namespace Blackjack
             }
         }
         public string HandString()
-        {
+        { // puts all cards togheter to and therby prints out the whole hand
             string returnString = " ";
             for (int i = 0; i < hand.Count; i++)
             {
@@ -58,7 +58,7 @@ namespace Blackjack
             return returnString;
         }
         public void Hit(Card card)
-        { // adds card to hand and prints its info 
+        { // adds card to hand and prints its info also with cool loading dots effekt made by Carl
             for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine(".");
@@ -79,7 +79,7 @@ namespace Blackjack
             Console.ReadKey(true);
         }
         public void Bust()
-        {
+        { // prints the correct win statement and makes sure the game continues accordingly by skipping all other play like offer hit
             if (this is Dealer && busted == false)
             {
                 Console.WriteLine("Player Wins!");

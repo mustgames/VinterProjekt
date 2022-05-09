@@ -1,0 +1,44 @@
+@startuml
+class DrawnCards {
+    i : int = 1
+    + RememberCard(card:Card) : void
+    + ListPlayedCards() : void
+}
+class "Dictionary`2"<T1,T2> {
+}
+DrawnCards o-> "playedCards<int,Card>" "Dictionary`2"
+@enduml
+@startuml
+class Deck {
+    + Deck()
+    + CreateDeck() : void
+}
+class "List`1"<T> {
+}
+class "Queue`1"<T> {
+}
+Deck o-> "deckOrder<Card>" "List`1"
+Deck o-> "deckUnOrder<Card>" "Queue`1"
+Deck o-> "random" Random
+@enduml
+@startuml
+class Dealer {
+    + Dealer()
+}
+Player <|-- Dealer
+@enduml
+@startuml
+class Card {
+    + value : int
+    + suite : string
+    + isAce : bool
+    + <<virtual>> GetCardString() : string
+}
+@enduml
+@startuml Ace
+class Ace {
+    + Ace()
+    + <<override>> GetCardString() : string
+}
+DressedCard <|-- Ace
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+!include .\\Blackjack\Blackjack\Ace.puml
+!include .\\Blackjack\Blackjack\Card.puml
+!include .\\Blackjack\Blackjack\Dealer.puml
+!include .\\Blackjack\Blackjack\Deck.puml
+!include .\\Blackjack\Blackjack\DrawnCards.puml
+!include .\\Blackjack\Blackjack\DressedCards.puml
+!include .\\Blackjack\Blackjack\Game.puml
+!include .\\Blackjack\Blackjack\Player.puml
+!include .\\Blackjack\Blackjack\Program.puml
+!include .\\Blackjack\Blackjack\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.puml
+!include .\\Blackjack\Blackjack\obj\Debug\net6.0\Blackjack.AssemblyInfo.puml
+!include .\\Blackjack\Blackjack\obj\Debug\net6.0\Blackjack.GlobalUsings.g.puml
+@enduml

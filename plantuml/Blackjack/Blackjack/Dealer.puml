@@ -1,0 +1,21 @@
+@startuml
+class Dealer {
+    + Dealer()
+}
+Player <|-- Dealer
+@enduml
+@startuml
+class Card {
+    + value : int
+    + suite : string
+    + isAce : bool
+    + <<virtual>> GetCardString() : string
+}
+@enduml
+@startuml Ace
+class Ace {
+    + Ace()
+    + <<override>> GetCardString() : string
+}
+DressedCard <|-- Ace
+@enduml

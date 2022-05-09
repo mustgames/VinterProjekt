@@ -1,0 +1,7 @@
+@startuml Ace
+class Ace {
+    + Ace()
+    + <<override>> GetCardString() : string
+}
+DressedCard <|-- Ace
+@enduml

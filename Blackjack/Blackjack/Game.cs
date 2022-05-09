@@ -10,7 +10,7 @@ namespace Blackjack
         Dealer dealer = new Dealer();
         DrawnCards drawnCards = new DrawnCards();
         public void Intro()
-        { // intro gives player some basic info and lets them input a string name
+        { // intro gives player some basic info and lets them input a string name, dosnt let them input nothing and Dealer since the Dealer has the name dealer
             players.Add(player);
             Console.WriteLine("Welcome to Blackjack");
             Console.WriteLine("What is your name gambling man!");
@@ -19,13 +19,13 @@ namespace Blackjack
                 try
                 {
                     player.name = Console.ReadLine();
-                    if (player.name != "" && player.name != "nothing" && player.name != "Nothing" && player.name != "NOTHING")
+                    if (player.name != "" && player.name != "nothing" && player.name != "Nothing" && player.name != "NOTHING"&& player.name != "Dealer")
                     {
                         break;
                     }
                     else
                     {
-                        System.Console.WriteLine("Your name can't be nothing");
+                        System.Console.WriteLine("Your name can't be nothing or Dealer");
                     }
                 }
                 catch (System.NullReferenceException)
@@ -55,6 +55,7 @@ namespace Blackjack
             {
                 deck.CreateDeck();
                 Console.WriteLine("Time to shuffle deck");
+                drawnCards.ClearCards();
             }
             foreach (Player player in players)
             {
@@ -146,7 +147,7 @@ namespace Blackjack
             }
         }
         public void ShowPlayedCardsOption()
-        {
+        { // gives players an option to call the ListPlayedCards() method to see all cards played in all games so far
             while (true)
             {
                 Console.WriteLine();
