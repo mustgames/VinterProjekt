@@ -19,7 +19,7 @@ namespace Blackjack
                 try
                 {
                     player.name = Console.ReadLine();
-                    if (player.name != "" && player.name != "nothing" && player.name != "Nothing" && player.name != "NOTHING"&& player.name != "Dealer")
+                    if (player.name != "" && player.name != "nothing" && player.name != "Nothing" && player.name != "NOTHING" && player.name != "Dealer")
                     {
                         break;
                     }
@@ -51,7 +51,7 @@ namespace Blackjack
                     dealer.hand.Clear();
                 }
             }
-            if (deck.deckUnOrder.Count < 10)
+            if (deck.deckUnOrder.Count < 10) // if the deck has less then 10 cards it will shuffle before dealing in order to not run out of cards during a game
             {
                 deck.CreateDeck();
                 Console.WriteLine("Time to shuffle deck");
@@ -60,10 +60,10 @@ namespace Blackjack
             foreach (Player player in players)
             {
                 player.hand.Add(deck.deckUnOrder.Dequeue());
-                drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
+                drawnCards.RememberCard(player.hand[player.hand.Count - 1].GetCardString(), player.hand[player.hand.Count - 1]);
 
                 player.hand.Add(deck.deckUnOrder.Dequeue());
-                drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
+                drawnCards.RememberCard(player.hand[player.hand.Count - 1].GetCardString(), player.hand[player.hand.Count - 1]);
 
                 if (player.HandValue() == 21)
                 {
@@ -71,7 +71,7 @@ namespace Blackjack
                 }
             }
             dealer.hand.Add(deck.deckUnOrder.Dequeue());
-            drawnCards.RememberCard(dealer.hand[dealer.hand.Count - 1]);
+            drawnCards.RememberCard(dealer.hand[dealer.hand.Count - 1].GetCardString(), dealer.hand[dealer.hand.Count - 1]);
 
         }
         public void OfferHit()
@@ -87,7 +87,7 @@ namespace Blackjack
                 if (input == "y" || input == "Y")
                 {
                     player.Hit(deck.deckUnOrder.Dequeue());
-                    drawnCards.RememberCard(player.hand[player.hand.Count - 1]);
+                    drawnCards.RememberCard(player.hand[player.hand.Count - 1].GetCardString(), player.hand[player.hand.Count - 1]);
 
                 }
                 else if (input == "n" || input == "N")
@@ -123,7 +123,7 @@ namespace Blackjack
                         break;
                     }
                     dealer.Hit(deck.deckUnOrder.Dequeue());
-                    drawnCards.RememberCard(dealer.hand[dealer.hand.Count - 1]);
+                    drawnCards.RememberCard(dealer.hand[dealer.hand.Count - 1].GetCardString(), dealer.hand[dealer.hand.Count - 1]);
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace Blackjack
             while (true)
             {
                 Console.WriteLine();
-                Console.WriteLine("want show played cards? press [y] for yes or [n] for no");
+                Console.WriteLine("Do you want too check if a specific card has been played? [y] for yes or [n] for no");
                 string input = Console.ReadLine();
                 if (input == "n" || input == "N")
                 {
@@ -159,7 +159,7 @@ namespace Blackjack
                 }
                 else if (input == "y" || input == "Y")
                 {
-                    drawnCards.ListPlayedCards();
+                    drawnCards.CheckCard();
                     break;
                 }
             }

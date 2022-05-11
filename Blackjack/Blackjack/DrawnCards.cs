@@ -4,25 +4,28 @@ namespace Blackjack
 {
     public class DrawnCards
     { // DrawnCards keeps track of all cards outside the deck and keeps them in a dictionary
-        Dictionary<int, Card> playedCards = new Dictionary<int, Card>();
-        int i = 1;
-        public void RememberCard(Card card)
+        Dictionary<string, Card> playedCards = new Dictionary<string, Card>();
+        public void RememberCard(string cardString, Card card)
         {
-            playedCards.Add(i, card);
-            i++;
+            playedCards.Add(cardString, card);
         }
-        public void ListPlayedCards() 
-        { // Prints out all Cards in the playedCards
-
-            for (int i = 1; i < playedCards.Count + 1; i++)
+        public void CheckCard()
+        { // Checks a inputed string if it matches with a value 
+            Console.Clear();
+            Console.WriteLine("Write the card you want to check star with its value then its suite, use a big letter in begining of suite or dress value and small letter for ( of )  (for example: 10 of Hearts");
+            string input = Console.ReadLine();
+            if (playedCards.ContainsKey(input))
             {
-                Console.WriteLine(playedCards[i].GetCardString());
-
+                Console.WriteLine("The card " + input + " has been played!");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("The card " + input + " has NOT been played");
             }
         }
         public void ClearCards()
         { // Clears cards, this methode is called when the deck is shuffled so you can keep track of the cards that are currently left in the deck
-            i = 1;
             playedCards.Clear();
         }
     }
