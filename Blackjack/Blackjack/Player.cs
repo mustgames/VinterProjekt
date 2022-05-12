@@ -42,7 +42,7 @@ namespace Blackjack
             }
         }
         public string HandString()
-        { // puts all cards togheter to and therby prints out the whole hand
+        { // puts all cards togheter to print out the whole hand
             string returnString = " ";
             for (int i = 0; i < hand.Count; i++)
             {

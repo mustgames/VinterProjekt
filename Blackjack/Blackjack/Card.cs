@@ -6,7 +6,7 @@ namespace Blackjack
         public string suite;
         public bool isAce;
         public virtual string GetCardString()
-        {
+        { // returns a string displaying all of the cards information to the player
             return value + " of " + suite;
         }
     }

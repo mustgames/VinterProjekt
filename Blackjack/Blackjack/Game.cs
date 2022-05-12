@@ -173,7 +173,7 @@ namespace Blackjack
             }
         }
         public void DealerWin()
-        {
+        { // Is called if dealer picks up additional cards and has a higher hand value then the player
             if (win == false)
             {
                 Console.WriteLine("Dealer Wins yay!!! i get the monies");
